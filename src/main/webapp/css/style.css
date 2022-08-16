@@ -1,0 +1,32 @@
+.table-padding{
+    padding: 30px 0;
+}
+th{
+    color: white;
+    font-weight: bold;
+    background-color: navy;
+    text-align: center;
+}
+tr:hover{
+    background-color: moccasin;
+}
+table th, table td{
+    border: 1px solid gainsboro;
+    padding: 8px;
+    height: 20px;
+}
+.nav-element{
+    padding: 0 8px;
+}
+.button{
+    margin: 10px 0;
+    padding: 8px;
+    color: white;
+    background-color: #2a3f52;
+}
+.hide{
+    display: none;
+}
+.show{
+    display: inline;
+}
