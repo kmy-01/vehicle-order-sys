@@ -45,6 +45,7 @@
           <div class="col-md-6 col-sm-6">
             <div class="main-header">
               <a class="nav-element" href="index.html">Staff Log Out</a>
+              <a class="nav-element" href="num-staff-per-page.html">View All Staff</a>
               <a class="nav-element" href="staff-account.jsp">Account</a>
             </div> <!-- /.top-header-left -->
           </div> <!-- /.col-md-6 -->

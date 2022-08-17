@@ -25,32 +25,31 @@ public class StaffLogInSessionBean implements StaffLogInSessionBeanLocal {
     }
 
     @Override
-    public List<Employee> readEmployee(int currentPage, int recordsPerPage, String keyword) throws  EJBException {
+    public List<Employee> readEmployee(int currentPage, int recordsPerPage, String keyword, String direction) throws  EJBException {
         Query q = null;
         int start = 0;
-
+        direction = " " + direction;
         if (keyword.isEmpty()) {
-            q = em.createNativeQuery("SELECT * FROM employees.employee order by id", Employee.class);
+            q = em.createNativeQuery("SELECT * FROM classicmodels.employees order by id" + direction, Employee.class);
             start = currentPage * recordsPerPage - recordsPerPage;
         } else {
-            q = em.createNativeQuery("SELECT * from employees.employee WHERE concat(id,first_name,last_name,gender) LIKE ? order by id",Employee.class);
+            q = em.createNativeQuery("SELECT * from classicmodels.employees WHERE concat(id,first_name,last_name,extension,email,officecode,jobtitle) LIKE ? order by id" + direction, Employee.class);
             start = currentPage * recordsPerPage - recordsPerPage;
             q.setParameter(1, keyword );
         }
-//use of setMaxResults --> to replace LIMIT & setFirstResult --> to replace OFFSET
         List<Employee> results = q.setFirstResult(start).setMaxResults(recordsPerPage).getResultList();
         return results;
     }
 
     @Override
-    public int getNumberOfRows(String username) throws EJBException {
+    public int getNumberOfRows(String keyword) throws EJBException {
         Query q = null;
-        if (username.isEmpty()) {
-            q = em.createNativeQuery("SELECT COUNT(*) AS totalrow FROM employees.employee");
+        if (keyword.isEmpty()) {
+            q = em.createNativeQuery("SELECT COUNT(*) AS totalrow FROM classicmodels.employees");
         } else {
-            q = em.createNativeQuery("SELECT COUNT(*) AS totalrow from employees.employee WHERE concat(id,first_name,last_name,gender) LIKE ?");
+            q = em.createNativeQuery("SELECT COUNT(*) AS totalrow FROM classicmodels.employees WHERE concat(id,first_name,last_name,extension,email,officecode,jobtitle) LIKE ?");
             // setParameter( integer position, Object value );
-            q.setParameter(1, "%" + username + "%");
+            q.setParameter(1, "%" + keyword + "%");
         }
         BigInteger results = (BigInteger) q.getSingleResult();
         int i = results.intValue();

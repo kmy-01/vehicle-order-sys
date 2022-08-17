@@ -54,14 +54,8 @@ public class StaffSignIn extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//        PrintWriter out = response.getWriter();
-//        out.println( "<!DOCTYPE html>" );
-//        out.println( "<html><body>" );
-//        out.println( "<p>" );
-//        out.println( "Log In Failed. Please Try Again...");
-//        out.println( "</p>" );
-//        out.println( "</body></html>" );
 
+        // Update Acc Info
         String[] infoToUpdate = new String[8];
         infoToUpdate[2] = request.getParameter("staffid");
 
@@ -73,32 +67,11 @@ public class StaffSignIn extends HttpServlet {
         infoToUpdate[6] = request.getParameter("jobtitle");
         infoToUpdate[7] = request.getParameter("supervisor");
 
-        PrintWriter out = response.getWriter();
-        out.println(infoToUpdate[1]);
-
         staffbean.updateEmployee( infoToUpdate );
-        ValidateManageLogic.navigateJS(out);
 
-//        try {
-//            if (ValidateManageLogic.validateManager(request).equals("UPDATE")) {
-//                // call session bean updateEmployee method
-//                staffbean.updateEmployee(infoToUpdate);
-//            }
-
-//            else if (ValidateManageLogic.validateManager(request).equals("DELETE")) {
-//                // call session bean deleteEmployee method
-//                staffbean.deleteEmployee(eid);
-//                // if ADD button is clicked
-//            } else {
-//                // call session bean addEmployee method
-//                staffbean.addEmployee(s);
-//            }
-
-
-
-            // this line is to redirect to notify record has been updated and redirect to another page
-//            ValidateManageLogic.navigateJS(out);
-//        } catch(EJBException ex){ }
-
+        PrintWriter out = response.getWriter();
+        out.println("<SCRIPT type=\"text/javascript\">");
+        out.println("window.location.assign(\"successful.html\")");
+        out.println("</SCRIPT>");
     }
 }

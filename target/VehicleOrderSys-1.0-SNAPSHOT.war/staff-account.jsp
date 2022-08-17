@@ -116,7 +116,6 @@
                 </tr>
                 </tbody>
             </table>
-        <button type="button" class="button"><a href="staff-dashboard.jsp">Back</a></button>
         <button type="button" class="button show" onclick="editAccInfo()" id="edit_btn" style="color:darkblue;">Edit Info</button>
         <button type="submit" class="button hide" id="submit_btn" style="color:darkblue;">Submit Change</button>
         </form>
