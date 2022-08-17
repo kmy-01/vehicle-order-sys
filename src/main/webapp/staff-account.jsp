@@ -49,7 +49,7 @@
 
     <div class="container">
         <h2>Profile</h2>
-        <form action="StaffSignIn" method="post">
+        <form action="staffSignIn" method="post">
             <table class="container table-padding">
                 <tbody>
                 <tr>
@@ -116,10 +116,10 @@
                 </tr>
                 </tbody>
             </table>
+        <button type="button" class="button"><a href="staff-dashboard.jsp">Back</a></button>
+        <button type="button" class="button show" onclick="editAccInfo()" id="edit_btn" style="color:darkblue;">Edit Info</button>
+        <button type="submit" class="button hide" id="submit_btn" style="color:darkblue;">Submit Change</button>
         </form>
-        <button class="button"><a href="/staff-dashboard.jsp">Back</a></button>
-        <button class="button show" onclick="editAccInfo()" id="edit_btn">Edit Info</button>
-        <input type="submit" class="button hide" id="submit_btn" value="Submit Change">
     </div>
 
     <script>
@@ -132,7 +132,6 @@
             $('input[class=hide]').toggleClass('hide show');
         }
     </script>
-
 
     <script src="js/vendor/jquery-1.10.1.min.js"></script>
     <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.1.min.js"><\/script>')</script>

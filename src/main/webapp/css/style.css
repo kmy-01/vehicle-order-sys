@@ -18,11 +18,10 @@ table th, table td{
 .nav-element{
     padding: 0 8px;
 }
-.button{
+button{
     margin: 10px 0;
     padding: 8px;
-    color: white;
-    background-color: #2a3f52;
+    color: black;
 }
 .hide{
     display: none;

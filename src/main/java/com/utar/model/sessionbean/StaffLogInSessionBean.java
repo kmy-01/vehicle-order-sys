@@ -66,7 +66,7 @@ public class StaffLogInSessionBean implements StaffLogInSessionBeanLocal {
 
     @Override
     public void updateEmployee(String[] s) throws EJBException {
-        Employee e = findEmployee(s[0]);
+        Employee e = findEmployee(s[2]);
 
         e.setFirstname(s[0]);
         e.setLastname(s[1]);

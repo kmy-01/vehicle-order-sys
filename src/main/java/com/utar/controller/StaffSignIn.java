@@ -3,6 +3,7 @@ package com.utar.controller;
 
 import com.utar.model.entity.Employee;
 import com.utar.model.sessionbean.StaffLogInSessionBeanLocal;
+import com.utar.utilities.ValidateManageLogic;
 
 import javax.ejb.EJB;
 import javax.ejb.EJBException;
@@ -21,6 +22,7 @@ public class StaffSignIn extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
         String username = request.getParameter("staff-username");
 
         try {
@@ -52,6 +54,13 @@ public class StaffSignIn extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//        PrintWriter out = response.getWriter();
+//        out.println( "<!DOCTYPE html>" );
+//        out.println( "<html><body>" );
+//        out.println( "<p>" );
+//        out.println( "Log In Failed. Please Try Again...");
+//        out.println( "</p>" );
+//        out.println( "</body></html>" );
 
         String[] infoToUpdate = new String[8];
         infoToUpdate[2] = request.getParameter("staffid");
@@ -65,10 +74,31 @@ public class StaffSignIn extends HttpServlet {
         infoToUpdate[7] = request.getParameter("supervisor");
 
         PrintWriter out = response.getWriter();
-        out.println(" <script> console.log("+ infoToUpdate[2] +  ") </script> ");
-
+        out.println(infoToUpdate[1]);
 
         staffbean.updateEmployee( infoToUpdate );
+        ValidateManageLogic.navigateJS(out);
+
+//        try {
+//            if (ValidateManageLogic.validateManager(request).equals("UPDATE")) {
+//                // call session bean updateEmployee method
+//                staffbean.updateEmployee(infoToUpdate);
+//            }
+
+//            else if (ValidateManageLogic.validateManager(request).equals("DELETE")) {
+//                // call session bean deleteEmployee method
+//                staffbean.deleteEmployee(eid);
+//                // if ADD button is clicked
+//            } else {
+//                // call session bean addEmployee method
+//                staffbean.addEmployee(s);
+//            }
+
+
+
+            // this line is to redirect to notify record has been updated and redirect to another page
+//            ValidateManageLogic.navigateJS(out);
+//        } catch(EJBException ex){ }
 
     }
 }
